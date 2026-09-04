@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#1a1220"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="description" content="Homebrew D&amp;D 5e Fiddle of Transmutation — tune to ~75 materials and roll mechanical effects."/>
+<title>Fiddle of Transmutation</title>
+<style> :root{--bg:#1a1220;--bg2:#251830;--card:#2e1f3d;--ink:#f5eef8;--muted:#b9a8c9;--accent:#e8b84a;--accent2:#c77dff;--ok:#6fd3a0;--warn:#ff8b6a;--border:rgba(255,255,255,.12);--radius:14px;--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px)} *{box-sizing:border-box;-webkit-tap-highlight-color:transparent} html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.4;min-height:100%} body{padding:calc(10px + var(--safe-t)) 12px calc(20px + var(--safe-b));max-width:480px;margin:0 auto} header{text-align:center;margin-bottom:10px} h1{font-size:1.25rem;margin:0 0 4px;color:var(--accent);letter-spacing:.02em} .tagline{margin:0;color:var(--muted);font-size:.82rem} .badge{display:inline-block;margin-top:8px;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent2);border:1px solid rgba(199,125,255,.4);padding:3px 8px;border-radius:999px} details.howto{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px;margin-bottom:10px} details.howto summary{cursor:pointer;font-weight:700;color:var(--accent2);font-size:.92rem;list-style:none} details.howto summary::-webkit-details-marker{display:none} details.howto[open] summary{margin-bottom:6px} details.howto p,details.howto ul{margin:0 0 8px;color:var(--muted);font-size:.85rem} details.howto ul{padding-left:1.1rem} .panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;margin-bottom:10px} label.sec{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:8px} #search{width:100%;appearance:none;border:1px solid var(--border);background:var(--bg2);color:var(--ink);border-radius:12px;padding:12px 14px;font-size:1rem;margin-bottom:8px;min-height:48px} #search::placeholder{color:var(--muted)} .cats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px} .cat{appearance:none;border:1px solid var(--border);background:var(--bg2);color:var(--muted);border-radius:999px;padding:8px 12px;font-size:.78rem;font-weight:600;cursor:pointer;min-height:40px} .cat.active{border-color:var(--accent);color:var(--accent);background:#3a2a1a} .meta-line{font-size:.75rem;color:var(--muted);margin:0 0 8px} .list{max-height:42vh;overflow:auto;display:grid;gap:6px;-webkit-overflow-scrolling:touch;border-radius:10px} .mat{appearance:none;border:2px solid var(--border);background:var(--bg2);color:var(--ink);border-radius:12px;padding:10px 12px;text-align:left;cursor:pointer;min-height:52px;width:100%} .mat:active{transform:scale(.98)} .mat.active{border-color:var(--accent);background:#3a2a1a;box-shadow:0 0 0 1px rgba(232,184,74,.25)} .mat-name{font-weight:700;display:block;font-size:.95rem} .mat-meta{display:block;font-size:.72rem;color:var(--muted);margin-top:2px} .play-wrap{margin:6px 0 4px} #play{width:100%;appearance:none;border:none;border-radius:18px;min-height:64px;font-size:1.2rem;font-weight:800;letter-spacing:.04em;cursor:pointer;color:#1a1220;background:linear-gradient(180deg,#f0d078 0%,var(--accent) 55%,#c9972e 100%);box-shadow:0 6px 0 #8a6a1a,0 10px 24px rgba(0,0,0,.35)} #play:active{transform:translateY(4px);box-shadow:0 2px 0 #8a6a1a,0 4px 12px rgba(0,0,0,.3)} #play:disabled{opacity:.55;cursor:not-allowed;transform:none} .result{min-height:150px;position:relative;overflow:hidden} .result.empty .placeholder{color:var(--muted);font-size:.95rem;text-align:center;padding:28px 8px;margin:0} .result.flash{animation:pulse .35s ease-out} @keyframes pulse{0%{transform:scale(.98);background:#4a3560}100%{transform:scale(1);background:var(--card)}} .roll-num{position:absolute;top:10px;right:12px;font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums} .effect-title{font-size:1.12rem;font-weight:800;margin:0 56px 8px 0;color:var(--accent)} .effect-body{margin:0;font-size:.98rem} .dc-note{margin:10px 0 0;font-size:.82rem;color:var(--muted)} .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px} .chip{font-size:.68rem;padding:4px 8px;border-radius:999px;background:var(--bg2);border:1px solid var(--border);color:var(--muted)} .chip.hot{color:var(--warn);border-color:rgba(255,139,106,.4)} .chip.ok{color:var(--ok);border-color:rgba(111,211,160,.4)} footer{text-align:center;color:var(--muted);font-size:.7rem;margin-top:6px} .empty-list{color:var(--muted);font-size:.9rem;padding:16px;text-align:center} </style>
+</head>
+<body>
+<header>
+  <h1>Fiddle of Transmutation</h1>
+  <p class="tagline">Tune the fiddle to a material, then roll a concrete 5e-style effect</p>
+  <span class="badge">Homebrew · Not official WotC content</span>
+</header>
+
+<details class="howto">
+  <summary>How to use at the table</summary>
+  <p>Search or filter to the material your fiddle is made of / tuned to. Tap <strong>Play Fiddle</strong> (usually an action). Read the mechanical text; the DM adjudicates stacking and concentration.</p>
+  <ul>
+    <li>Each material builds its own effect table from affinity + a signature effect (homebrew).</li>
+    <li>Use your spell save DC if you have one; otherwise the material’s listed DC.</li>
+    <li>Unless noted, range is 30 ft to a creature that can hear the tune.</li>
+    <li>Playing is audible — Stealth has disadvantage while you play.</li>
+  </ul>
+</details>
+
+<section class="panel">
+  <label class="sec" for="search">Material / element</label>
+  <input id="search" type="search" placeholder="Search materials…" autocomplete="off" enterkeyhint="search"/>
+  <div class="cats" id="cats" role="tablist" aria-label="Categories"></div>
+  <p class="meta-line" id="count-line"></p>
+  <div class="list" id="list" role="listbox" aria-label="Materials"></div>
+</section>
+
+<div class="play-wrap">
+  <button type="button" id="play" disabled>Select a material</button>
+</div>
+
+<section class="panel result empty" id="result" aria-live="polite">
+  <p class="placeholder">Your tune’s magic will appear here.</p>
+</section>
+
+<footer>Works offline · static HTML · GitHub Pages / htmlpreview</footer>
+
+<script src="materials-part1.js"></script>
+<script src="materials-part2.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
