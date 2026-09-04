@@ -1,49 +1,62 @@
 # Fiddle of Transmutation
 
-Mobile-first **homebrew** D&D 5e-style phone web app for rolling magical effects from four versions of a Fiddle of Transmutation. Zero build step — open `index.html` locally, on GitHub Pages, or via htmlpreview.
+Mobile-first **homebrew** D&D 5e-style phone web app. Tune a magical fiddle to one of **78 materials / elements**, then roll a concrete mechanical effect for the table.
 
-> **Homebrew tables.** Effects are original mechanical prompts for table use. They are **not** official Wizards of the Coast / D&D Beyond content and do not cite published books.
+Zero build — open `index.html` locally, on GitHub Pages, or via htmlpreview.
+
+> **Homebrew.** Not official Wizards of the Coast / D&D Beyond content. No fake book citations.
 
 ## Quick start
 
-1. Open [`index.html`](./index.html) on your phone or laptop.
-2. Pick a fiddle version (rarity).
-3. Tap **Play Fiddle**.
-4. Read the title + mechanical text aloud; the DM adjudicates saves, concentration, and stacking.
+1. Open [`index.html`](./index.html) on your phone.
+2. Search or filter by category (Elements, Metals, Fantasy Metals, Nature).
+3. Select the material your fiddle is made of / tuned to.
+4. Tap **Play Fiddle** and apply the mechanical text (DM adjudicates).
 
-Works offline once loaded (static HTML/CSS/JS).
+## How effects work
 
-## How to use at the table
+Each material has:
 
-- Playing the fiddle is typically an **action** (DM may allow a bonus action).
-- Unless an effect says otherwise, it targets **you** or a creature you choose within **30 ft** that can hear the tune.
-- Use **your spell save DC** if you have one; otherwise the app’s default DC for that rarity (13 / 13 / 15 / 17).
-- The fiddle is **audible** — Stealth checks have disadvantage while playing.
-- Label results as homebrew when recording loot or session notes.
+- A **damage/affinity type** (fire, cold, necrotic, force, …)
+- A **default save ability + DC**
+- A **signature unique effect**
+- A generated **12-effect table** mixing:
+  - Affinity damage burst (2d6, save for half)
+  - Resistance hum (concentration)
+  - Weapon song (+1d4 typed damage, magical)
+  - Ward (+2 AC, save advantage)
+  - Condition cadence
+  - Utility tone
+  - Pulse nova (short AoE, slight self risk)
+  - Lingering aura (difficult terrain + chip damage)
+  - Signature effect (material-specific)
+  - Transmute touch
+  - Countertune (damage reduction window)
+  - Echo mark (delayed extra damage)
 
-## Fiddle versions
+Rolls show `d12 → N`, title, full mechanical text, and tags.
 
-| Version | Rarity | Effects | Default DC | Tone |
-|--------|--------|---------|------------|------|
-| Apprentice's Pine Fiddle | Common | 16 | 13 | Minor utility, cosmetic, low risk |
-| Traveler's Maple Fiddle | Uncommon | 18 | 13 | Short buffs / debuffs |
-| Archmage's Ebony Fiddle | Rare | 20 | 15 | Enlarge/reduce, haste-like, polymorph, strong buffs |
-| Chaosgut Fiddle | Very Rare | 20 | 17 | Wilder, double-edged, riskier |
+## Materials (78)
 
-**Total: 74 mechanical effects.**
+| Category | Count | Examples |
+|----------|------:|----------|
+| Elements | 22 | Water, Fire, Lightning, Ice, Void, Magma, Shadow… |
+| Metals | 20 | Iron, Steel, Copper, Silver, Gold, Titanium, Mercury… |
+| Fantasy Metals | 16 | Mithral, Adamantine, Cold Iron, Starmetal, Voidsteel… |
+| Nature | 20 | Oak/Pine/Ebony wood, Bone, Crystal, Amber, Coral, Jade… |
 
 ## UX
 
-- Thumb-friendly version cards and a large **Play Fiddle** button
-- Result shows effect title, full mechanical text, optional `dN → roll` number, and tags
-- Light flash animation; snappy, mid-session readable
-- Collapsible “How to use at the table” blurb in the UI
+- Thumb-friendly search + category chips
+- Scrollable material list sized for phones
+- Large **Play Fiddle** button
+- Snappy result flash; readable mid-session
+- Works offline once loaded
 
 ## Hosting
 
-- GitHub Pages: enable Pages on this repo (root / `index.html`)
-- Or paste the raw `index.html` URL into [htmlpreview](https://htmlpreview.github.io/)
+Enable GitHub Pages on this repo (root), or use [htmlpreview](https://htmlpreview.github.io/).
 
 ## License / credit
 
-Homebrew fan utility for personal table use. Dungeons & Dragons is a trademark of Wizards of the Coast; this project is unofficial.
+Unofficial fan utility for personal tables. Dungeons & Dragons is a trademark of Wizards of the Coast.
