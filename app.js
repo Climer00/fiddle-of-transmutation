@@ -99,14 +99,25 @@ function renderList(){
 function randomMaterial(){
   const items=filteredMats();
   const pick=weightedPick(items);
-  if(!pick) return;
+  if(!pick){
+    resultEl.classList.remove("empty","flash");
+    resultEl.innerHTML='<p class="placeholder">No materials in the current list to pick from.</p>';
+    return;
+  }
+  // Ensure list shows the pick (clear conflicting filters only if needed)
   selectMat(pick.id);
-  // scroll selected into view
   const el=listEl.querySelector('.mat.active');
   if(el) el.scrollIntoView({block:"nearest",behavior:"smooth"});
-  // flash a note on the play button briefly
   const rar=TYPE_RARITY[pick.c]||pick.c;
+  playBtn.disabled=false;
   playBtn.textContent="Play Fiddle — "+pick.n+" ("+rar+")";
+  // Immediately transmute
+  roll();
+  // Annotate result with weighted-random note
+  const note=resultEl.querySelector('.dc-note');
+  if(note){
+    note.innerHTML='Material: <strong>'+pick.n+'</strong> ('+pick.c+' · '+rar+'). Picked by rarity-weighted random, then transmuted. Default save DC '+pick.dc+' unless you have a spell save DC. Homebrew table.';
+  }
 }
 
 function selectMat(id){
