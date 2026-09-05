@@ -3,6 +3,49 @@
 
 const CATS = ["All","Elements","Metals","Fantasy Metals","Nature"];
 
+/* Relative odds by material type (rarity). Higher = more common. */
+const TYPE_WEIGHT = {
+  "Elements": 12,          // Common
+  "Nature": 10,            // Common–Uncommon
+  "Metals": 6,             // Uncommon
+  "Fantasy Metals": 2      // Rare
+};
+const TYPE_RARITY = {
+  "Elements": "Common",
+  "Nature": "Uncommon",
+  "Metals": "Uncommon",
+  "Fantasy Metals": "Rare"
+};
+
+function typeWeight(m){
+  return TYPE_WEIGHT[m.c] || 1;
+}
+
+function weightedPick(items){
+  if(!items.length) return null;
+  let total = 0;
+  const weights = items.map(m => {
+    const w = typeWeight(m);
+    total += w;
+    return w;
+  });
+  let r = Math.random() * total;
+  for(let i=0;i<items.length;i++){
+    r -= weights[i];
+    if(r <= 0) return items[i];
+  }
+  return items[items.length-1];
+}
+
+function filteredMats(){
+  const q=(searchEl.value||"").trim().toLowerCase();
+  return MATS.filter(m=>{
+    if(cat!=="All" && m.c!==cat) return false;
+    if(!q) return true;
+    return (m.n+" "+m.c+" "+m.d+" "+m.t+" "+(TYPE_RARITY[m.c]||"")).toLowerCase().includes(q);
+  });
+}
+
 function effectsFor(m){
   const d=m.d, s=m.s, dc=m.dc, name=m.n;
   const list=[
@@ -38,23 +81,32 @@ CATS.forEach(c=>{
 });
 
 function renderList(){
-  const q=(searchEl.value||"").trim().toLowerCase();
-  const items=MATS.filter(m=>{
-    if(cat!=="All" && m.c!==cat) return false;
-    if(!q) return true;
-    return (m.n+" "+m.c+" "+m.d+" "+m.t).toLowerCase().includes(q);
-  });
-  countLine.textContent=items.length+" material"+(items.length===1?"":"s")+" · "+MATS.length+" total · each has "+effectsFor(MATS[0]).length+" effects";
+  const items=filteredMats();
+  countLine.textContent=items.length+" material"+(items.length===1?"":"s")+" · "+MATS.length+" total · each has "+effectsFor(MATS[0]).length+" effects · random is rarity-weighted";
   listEl.innerHTML="";
   if(!items.length){listEl.innerHTML='<div class="empty-list">No matches. Try another search or category.</div>';return;}
   items.forEach(m=>{
     const btn=document.createElement("button");
     btn.type="button"; btn.className="mat"+(selected&&selected.id===m.id?" active":"");
     btn.setAttribute("role","option"); btn.dataset.id=m.id;
-    btn.innerHTML='<span class="mat-name">'+m.n+'</span><span class="mat-meta">'+m.c+' · '+m.d+' · DC '+m.dc+' · '+m.t+'</span>';
+    const rar=TYPE_RARITY[m.c]||"";
+    btn.innerHTML='<span class="mat-name">'+m.n+'</span><span class="mat-meta">'+m.c+' · '+rar+' · '+m.d+' · DC '+m.dc+' · '+m.t+'</span>';
     btn.addEventListener("click",()=>selectMat(m.id));
     listEl.appendChild(btn);
   });
+}
+
+function randomMaterial(){
+  const items=filteredMats();
+  const pick=weightedPick(items);
+  if(!pick) return;
+  selectMat(pick.id);
+  // scroll selected into view
+  const el=listEl.querySelector('.mat.active');
+  if(el) el.scrollIntoView({block:"nearest",behavior:"smooth"});
+  // flash a note on the play button briefly
+  const rar=TYPE_RARITY[pick.c]||pick.c;
+  playBtn.textContent="Play Fiddle — "+pick.n+" ("+rar+")";
 }
 
 function selectMat(id){
@@ -83,6 +135,8 @@ function roll(){
 }
 
 playBtn.addEventListener("click",roll);
+const randomBtn=document.getElementById("random");
+if(randomBtn) randomBtn.addEventListener("click",randomMaterial);
 searchEl.addEventListener("input",renderList);
 renderList();
 })();
